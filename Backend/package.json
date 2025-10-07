@@ -24,6 +24,7 @@
     "langchain": "^0.3.31",
     "mammoth": "^1.10.0",
     "multer": "^2.0.2",
+    "nodemon": "^3.1.10",
     "openai": "^4.62.1",
     "pdf-parse": "^1.1.1",
     "youtubei.js": "^15.0.1"
