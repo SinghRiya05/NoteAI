@@ -11,7 +11,7 @@ import userRoutes from "./routes/user.js";
 const app = express();
 
 const allowedOrigins=[
-  "https://knowtify-rho.vercel.app"
+  "https://knowtify-plum.vercel.app"
 ];
 
 app.use(
