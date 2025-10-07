@@ -2,6 +2,7 @@ import React from "react";
 import { Moon, Sun, PenBoxIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
+import logo from "../../assets/logo.png"
 
 export default function Navbar({ type }) {
   const navigate = useNavigate();
@@ -19,7 +20,9 @@ export default function Navbar({ type }) {
                      text-xl sm:text-2xl cursor-pointer hover:opacity-90 transition"
         >
           Knowtify
-          <PenBoxIcon size={24} className="ml-2" />
+         
+
+          <PenBoxIcon size={25} className="ml-1" />
         </div>
 
         {/* Right Section */}

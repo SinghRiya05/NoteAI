@@ -7,7 +7,7 @@ function Footer() {
         
         {/* Brand */}
         <div>
-          <h2 className="text-2xl font-extrabold text-white">NoteAI</h2>
+          <h2 className="text-2xl font-extrabold text-white">Knowtify</h2>
           <p className="mt-3 text-gray-400 text-sm leading-relaxed">
             Transform your documents into smart insights with AI-powered analysis.
           </p>
