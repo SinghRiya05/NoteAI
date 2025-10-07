@@ -4,7 +4,7 @@ import axios from "axios";
 
 // Base URL setup for backend
 const API = axios.create({
-  baseURL: "https://noteai-sq7f.onrender.com", // backend ka base route
+  baseURL: "https://noteai-sq7f.onrender.com/api", // backend ka base route
 });
 
 // File upload function

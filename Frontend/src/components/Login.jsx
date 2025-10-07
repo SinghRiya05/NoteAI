@@ -16,7 +16,7 @@ function Login() {
 
     try {
  
-     const res = await axios.post("https://noteai-sq7f.onrender.com/login", {
+     const res = await axios.post("https://noteai-sq7f.onrender.com/api/login", {
         name,
         password,
       });
