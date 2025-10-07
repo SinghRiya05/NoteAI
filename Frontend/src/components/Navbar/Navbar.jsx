@@ -14,7 +14,7 @@ export default function Navbar({ type }) {
 
         {/* Logo / Brand */}
         <div
-          onClick={() => navigate("/home")}
+          onClick={() => navigate("/")}
           className="flex items-center text-green-700 dark:text-green-400 font-extrabold 
                      text-xl sm:text-2xl cursor-pointer hover:opacity-90 transition"
         >
@@ -68,7 +68,7 @@ export default function Navbar({ type }) {
 
             {/* Home Button */}
             <button
-              onClick={() => navigate("/home")}
+              onClick={() => navigate("/")}
               className="flex items-center gap-1 sm:gap-2 rounded-md py-2 px-4 
                          text-white font-medium bg-gradient-to-r from-green-800 to-green-600 
                          shadow-md hover:scale-105 hover:shadow-lg 

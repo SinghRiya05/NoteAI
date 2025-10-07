@@ -21,8 +21,9 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Login/>}/>
-      <Route path="/home" element={<PrivateRoute><Home/></PrivateRoute>}/>
+      
+      <Route path="/" element={<Home/>}/>
+      <Route path="/login" element={<Login/>}/>
       <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
     </Routes>
 

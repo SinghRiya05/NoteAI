@@ -4,6 +4,7 @@ import { getAnswer, reset } from "../../api/api";
 import { useTheme } from "../../context/ThemeContext";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm"; // supports tables, strikethrough, task lists
+import toast from "react-hot-toast";
 
 function Chat() {
   const { darkMode } = useTheme();
@@ -27,9 +28,11 @@ function Chat() {
   const handleReset = async () => {
     try {
       await reset();
+      toast.success("Clearing all messages.")
       setMessages([]);
       localStorage.removeItem("chatHistory");
     } catch (error) {
+      toast.error("Some thing went wrong.Please try again.")
       console.log(error);
     }
   };
@@ -111,27 +114,53 @@ function Chat() {
             >
               {msg.role === "ai" ? (
                 <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  components={{
-                    code({ node, inline, className, children, ...props }) {
-                      return (
-                        <pre
-                          className={`overflow-x-auto rounded my-2 p-3 ${
-                            darkMode
-                              ? "bg-gray-800 text-green-300"
-                              : "bg-gray-100 text-green-900"
-                          }`}
-                        >
-                          <code className="font-mono" {...props}>
-                            {children}
-                          </code>
-                        </pre>
-                      );
-                    },
-                  }}
-                >
-                  {msg.content}
-                </ReactMarkdown>
+  remarkPlugins={[remarkGfm]}
+  components={{
+    code({ inline, className, children, ...props }) {
+      const match = /language-(\w+)/.exec(className || "")
+      return !inline ? (
+        <pre
+          className={`overflow-x-auto rounded-md my-2 p-3 text-sm ${
+            darkMode
+              ? "bg-gray-900 text-green-300"
+              : "bg-gray-100 text-green-800"
+          }`}
+        >
+          <code {...props}>{children}</code>
+        </pre>
+      ) : (
+        <code
+          className={`px-1 rounded ${
+            darkMode ? "bg-gray-800 text-green-300" : "bg-gray-200 text-green-800"
+          }`}
+          {...props}
+        >
+          {children}
+        </code>
+      )
+    },
+    strong: ({ children }) => (
+      <strong className="font-semibold">{children}</strong>
+    ),
+    em: ({ children }) => (
+      <em className="italic">{children}</em>
+    ),
+    ul: ({ children }) => (
+      <ul className="list-disc ml-6">{children}</ul>
+    ),
+    ol: ({ children }) => (
+      <ol className="list-decimal ml-6">{children}</ol>
+    ),
+    a: ({ href, children }) => (
+      <a href={href} target="_blank" rel="noreferrer" className="text-green-500 underline">
+        {children}
+      </a>
+    ),
+  }}
+>
+  {msg.content}
+</ReactMarkdown>
+
               ) : (
                 msg.content
               )}

@@ -8,6 +8,7 @@ import {
   indexWebsite,
 } from "../../api/api";
 import UploadRes from "./components/UploadRes";
+import toast from "react-hot-toast";
 
 export default function Upload() {
   const [activeTab, setActiveTab] = useState("files");
@@ -37,6 +38,7 @@ export default function Upload() {
       try {
         setIndexing(true);
         const data = await uploadFile(file);
+        toast.success("File Indexed Succesfully")
         setUploads((prev) => [
           ...prev,
           {
@@ -48,6 +50,7 @@ export default function Upload() {
         ]);
         setFile(null);
       } catch (err) {
+        toast.error("Indexing Failed")
         console.error("Upload error:", err);
       } finally {
         setIndexing(false);
@@ -56,6 +59,7 @@ export default function Upload() {
       try {
         setIndexing(true);
         const data = await uploadYoutubeLink(youtubeLink);
+         toast.success("Youtube Link Indexed Succesfully")
         setUploads((prev) => [
           ...prev,
           {
@@ -66,6 +70,7 @@ export default function Upload() {
         ]);
         setYoutubeLink("");
       } catch (err) {
+        toast.error("Indexing Failed")
         console.error("YouTube upload error:", err);
       } finally {
         setIndexing(false);
@@ -73,6 +78,7 @@ export default function Upload() {
     } else if (activeTab === "text" && text.trim()) {
       setIndexing(true);
       const data = await indexText(text);
+       toast.success("Texts Indexed Succesfully")
       setUploads((prev) => [
         ...prev,
         {
@@ -87,6 +93,7 @@ export default function Upload() {
       try {
         setIndexing(true);
         const data = await indexWebsite(websiteLink);
+         toast.success("Web Indexed Succesfully")
         console.log(data);
         
         setUploads((prev) => [
@@ -99,12 +106,13 @@ export default function Upload() {
         ]);
         setWebsiteLink("");
       } catch (error) {
+        toast.error("Indexing Failed")
         console.error("Website upload error:", error);
       } finally {
         setIndexing(false);
       }
     } else {
-      alert("⚠️ Please provide input before uploading!");
+      toast.error("Please choose resources.")
     }
   };
 console.log(uploads);

@@ -23,12 +23,13 @@ function Login() {
       
       if (res.data.success) {
         localStorage.setItem("token", res.data.data.token);
-        navigate("/home");
+        navigate("/dashboard");
       } else {
        
         setError(res.data.message || "Invalid credentials");
       }
-    } catch (error) {        
+    } catch (error) {    
+      navigate("/");    
 
       setError(error.response.data.message)
       

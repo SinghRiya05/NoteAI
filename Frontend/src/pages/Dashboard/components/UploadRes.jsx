@@ -1,6 +1,7 @@
 import { Trash } from "lucide-react";
 import React from "react";
 import { deleteUploadedItem } from "../../../api/api";
+import toast from "react-hot-toast";
 
 export default function UploadRes({ indexing, uploads, setUploads }) {
 
@@ -8,8 +9,10 @@ export default function UploadRes({ indexing, uploads, setUploads }) {
     try {
       await deleteUploadedItem(id, type);
       // Remove from state after deletion
+      toast.success("Resource Deleted Successfullly.")
       setUploads((prev) => prev.filter((u) => u.id !== id));
     } catch (error) {
+      toast.error("Deletion Failed")
       console.error(error);
     }
   };
