@@ -2,8 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home/Home"
 import Dashboard from "./pages/Dashboard/Dashboard"
 import { useEffect, useState } from "react"
-import Login from "./components/Login";
-import PrivateRoute from "./PrivateRoute"
+
 
 
 function App() {
@@ -23,8 +22,7 @@ function App() {
       <Routes>
       
       <Route path="/" element={<Home/>}/>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
+      <Route path="/dashboard" element={<Dashboard/>}/>
     </Routes>
 
     </>
