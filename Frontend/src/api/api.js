@@ -2,9 +2,13 @@ import axios from "axios";
 
 // url=http://localhost:5000/api
 
-// Base URL setup for backend
+// // Base URL setup for backend
+// const API = axios.create({
+//   baseURL: "https://noteai-sq7f.onrender.com/api", // backend ka base route
+// });
+
 const API = axios.create({
-  baseURL: "https://noteai-sq7f.onrender.com/api", // backend ka base route
+  baseURL: "http://localhost:5000/api"
 });
 
 // File upload function

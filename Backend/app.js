@@ -2,31 +2,39 @@ import "dotenv/config"; // 🔹 ES Module friendly
 
 import express from "express";
 import cors from "cors";
+import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 
 import retrivalRoutes from "./routes/retrivalRoute.js";
 import indexingRoutes from "./routes/indexingRoute.js";
 import youtubeRoutes from "./routes/youtubeIndex.js";
 
 import userRoutes from "./routes/user.js";
+import connectDB from "./DB/db.js";
 const app = express();
+connectDB();
 
-const allowedOrigins=[
-  "https://knowtify-plum.vercel.app"
-];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
+// const allowedOrigins=[
+//   "https://knowtify-plum.vercel.app"
+// ];
+
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     credentials: true,
+//   })
+// );
+app.use(cors("*"));
 app.use(express.json());
+app.use(cookieParser());
+
 
 app.use("/api", indexingRoutes);
 app.use("/api", retrivalRoutes);
