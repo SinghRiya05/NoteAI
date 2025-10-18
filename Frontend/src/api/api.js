@@ -3,14 +3,15 @@ import axios from "axios";
 // url=http://localhost:5000/api
 
 // // Base URL setup for backend
-// const API = axios.create({
-//   baseURL: "https://noteai-sq7f.onrender.com/api", // backend ka base route
-// });
-
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://noteai-sq7f.onrender.com/api", // backend ka base route
   withCredentials:true,
 });
+
+// const API = axios.create({
+//   baseURL: "http://localhost:5000/api",
+//   withCredentials:true,
+// });
 
 // File upload function
 export const uploadFile = async (file) => {
