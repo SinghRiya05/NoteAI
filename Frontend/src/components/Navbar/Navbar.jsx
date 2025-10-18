@@ -2,11 +2,25 @@ import React from "react";
 import { Moon, Sun, PenBoxIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
+import {logout} from "../../api/api.js"
 import logo from "../../assets/logo.png"
+import toast from "react-hot-toast"
 
 export default function Navbar({ type }) {
   const navigate = useNavigate();
   const { darkMode, setDarkMode } = useTheme();
+
+  const handleLogOut=async()=>{
+   try {
+     const res=await logout();
+     navigate("/");
+    toast.success("User logged out successfully!")
+   } catch (error) {
+    console.log(error);
+    toast.error("Logging out failed")
+   }
+    
+  }
 
   return (
     <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 
@@ -71,13 +85,13 @@ export default function Navbar({ type }) {
 
             {/* Home Button */}
             <button
-              onClick={() => navigate("/")}
+              onClick={handleLogOut}
               className="flex items-center gap-1 sm:gap-2 rounded-md py-2 px-4 
                          text-white font-medium bg-gradient-to-r from-green-800 to-green-600 
                          shadow-md hover:scale-105 hover:shadow-lg 
                          focus:ring-2 focus:ring-green-500 transition duration-300"
             >
-              Home
+              Logout
             </button>
           </div>
         )}

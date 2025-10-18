@@ -3,6 +3,10 @@ import Home from "./pages/Home/Home"
 import Dashboard from "./pages/Dashboard/Dashboard"
 import { useEffect, useState } from "react"
 
+import Signup from "./pages/Auth/Signup";
+import Login from "./pages/Auth/Login";
+import PrivateRoute from "./PrivateRoute";
+
 
 
 function App() {
@@ -22,7 +26,9 @@ function App() {
       <Routes>
       
       <Route path="/" element={<Home/>}/>
-      <Route path="/dashboard" element={<Dashboard/>}/>
+      <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
     </Routes>
 
     </>

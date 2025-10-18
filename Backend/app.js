@@ -31,7 +31,10 @@ connectDB();
 //     credentials: true,
 //   })
 // );
-app.use(cors("*"));
+app.use(cors({
+  origin: "http://localhost:5173", // 👈 your React app URL
+  credentials: true,               // 👈 allow cookies
+}));
 app.use(express.json());
 app.use(cookieParser());
 

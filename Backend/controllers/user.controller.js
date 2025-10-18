@@ -4,6 +4,7 @@ import sendResponse from "../utils/sendResponse.js";
 
 export const registerUser = async (req, res) => {
   try {
+    
     const { username, email, password } = req.body;
 
     if(!username||!email||!password){
@@ -149,3 +150,25 @@ export const loginUser = async (req, res) => {
     );
   }
 };
+
+export const checkAuth = async (req, res) => {
+  try {
+  
+    // req.user comes from authMiddleware
+    return sendResponse(res, 200, true, "User authenticated", { user: req.user });
+  } catch (error) {
+    return sendResponse(res, 401, false, "Not authenticated");
+  }
+};
+
+export const logoutUser = (req, res) => {
+  console.log("logout");
+  
+  res.clearCookie("accessToken", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+  });
+  return sendResponse(res, 200, true, "Logged out successfully");
+};
+

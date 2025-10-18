@@ -8,7 +8,8 @@ import axios from "axios";
 // });
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api"
+  baseURL: "http://localhost:5000/api",
+  withCredentials:true,
 });
 
 // File upload function
@@ -89,7 +90,7 @@ export const indexWebsite=async(webUrl)=>{
     return response.data;
   } catch (error) {
     console.log(error);
-    
+    throw error;
   }
 }
 
@@ -99,6 +100,46 @@ export const reset=async()=>{
     return res
   } catch (error) {
     console.log(error);
-    
+    throw error;
   }
 }
+
+export const login=async(email,password)=>{
+try {
+    const res=await API.post("/login",{email,password})
+    return res;
+} catch (error) {
+  console.log(error);
+  throw error;
+}
+}
+
+export const signup=async(email,username,password)=>{
+  try {
+    const res=await API.post("/register",{email,username,password})
+    return res;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export const checkAuth=async()=>{
+ try {
+    const res = await API.get("/checkAuth");
+    return res;
+ } catch (error) {
+  console.log(error);
+  throw error;
+ }
+}
+
+export const logout=async()=>{
+try {
+    const res=await API.post("/logout")
+    return res;
+} catch (error) {
+  console.log(error);
+  throw error;
+}
+} 
