@@ -75,7 +75,7 @@ export const registerUser = async (req, res) => {
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
       secure: true, // use HTTPS
-      sameSite: "strict",
+      sameSite: "None",
       maxAge: 1000 * 60 * 60, // 1 hour
     });
 
@@ -126,7 +126,7 @@ export const loginUser = async (req, res) => {
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production", // HTTPS only in production
-      sameSite: "strict",
+      sameSite: "None",
       maxAge: 1000 * 60 * 60, // 1 hour
     });
 
