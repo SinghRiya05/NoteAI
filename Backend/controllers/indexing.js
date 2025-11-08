@@ -85,7 +85,7 @@ export const indexFile = async (req, res) => {
 
     // Ensure payload index for fileId exists
     try {
-      await qdrant.createPayloadIndex("noteai-collection", {
+      await qdrant.createPayloadIndex("nmeneoteai-collection", {
         field_name: "metadata.fileId",
         field_schema: "keyword",
         type: "file",

@@ -125,8 +125,8 @@ export const loginUser = async (req, res) => {
     // ✅ Set token in secure cookie
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // HTTPS only in production
-      sameSite: "None",
+      secure: "false", 
+      sameSite: "Lax",
       maxAge: 1000 * 60 * 60, // 1 hour
     });
 
