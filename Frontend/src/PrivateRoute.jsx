@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { checkAuth } from "./api/api.js"; // ✅ make sure API is exported from api.js
-import Spinner from "./components/Spinner.js";
+import Spinner from "./components/Spinner.jsx";
 
 const PrivateRoute = ({ children }) => {
   const [isAuth, setIsAuth] = useState(null);
