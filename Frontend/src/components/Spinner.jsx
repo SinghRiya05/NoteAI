@@ -1,24 +1,7 @@
 const Spinner = () => {
   return (
     <div className="flex justify-center items-center h-full w-full">
-      <div className="loader"></div>
-
-      <style>{`
-        .loader {
-          width: 40px;
-          height: 40px;
-          border: 4px solid #ddd;
-          border-top-color: #4f46e5; /* Indigo vibe */
-          border-radius: 50%;
-          animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
+      <div className="animate-spin h-8 w-8 border-4 border-gray-300 border-t-indigo-600 rounded-full"></div>
     </div>
   );
 };
